@@ -18,9 +18,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/reports', function () {
-    return view('pages.reports');
-});
+Route::get('/reports','HomeController@reports');
+
 
 Route::get('/addLocations', function () {
     return view('pages.additems.addLocations');

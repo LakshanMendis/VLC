@@ -229,15 +229,30 @@ class HomeController extends Controller
 
     }
 
+    public function reports(){
+
+        $logsheets = DB::table('tours')->get();
+
+        return view('pages.reports',['logsheets'=>$logsheets]);
+
+    }
+
+    
+
     public function viewTours(Request $request){
+
+
+        $logs = $request->input('log');
 
         $data = DB::table('routes')
         ->select('routes.tourDate','routes.from','routes.to','routes.nightStop','cities.cityName','a.cityName as toCity')
         ->join('cities', 'routes.from', '=', 'cities.id')
         ->join('cities as a', 'routes.to', '=', 'a.id')
+        ->where('logSheetNo',$logs)
         ->get();
         $logs = DB::table('tours')->get();
-        return view('home',['logs'=>$logs,'data'=>$data]);
+        // return view('home',['logs'=>$logs,'data'=>$data]);
+        return [$data];
     }
 
 
