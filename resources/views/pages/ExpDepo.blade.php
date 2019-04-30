@@ -147,7 +147,7 @@
 <!-- sweetalert -->
 <script src="{{ asset('theme/bower_components/sweetalert/sweetalert.js') }}"></script>
 
-<script type="text/javascript"></script>
+<script type="text/javascript">
 
   var kml = 0;
 
